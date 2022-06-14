@@ -23,11 +23,7 @@ jobs:
         run: |
           docker-compose up -d
           docker container rename baby_node_1 baby-node-1
-      - name: check address balances
-        run: |
-          chmod a+x ./homework/check-balances.sh
-          ./homework/check-balances.sh
       - name: check chain id
         run: |
           chmod a+x ./homework/check-chain-id.sh
-          bash homework/check-chain-id.sh
+          ./homework/check-chain-id.sh
