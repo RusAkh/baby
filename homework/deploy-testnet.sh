@@ -37,11 +37,10 @@ cat $HOME/.baby/config/genesis.json | jq '.app_state["mint"]["params"]["mint_den
 toml set --toml-path $HOME/.baby/config/app.toml api.address "tcp://0.0.0.0:1350"
 toml set --toml-path $HOME/.baby/config/app.toml api.swagger true
 toml set --toml-path $HOME/.baby/config/app.toml api.enable true
-toml set --toml-path $HOME/.baby/config/config.toml rpc.cors_allowed_origins ['*']
 
 # setup cors
 toml set --toml-path $HOME/.baby/config/app.toml api.enabled-unsafe-cors true
-
+toml set --toml-path $HOME/.baby/config/config.toml rpc.cors_allowed_origins ['*']
 
 # Allocate genesis accounts (cosmos formatted addresses)
 babyd add-genesis-account $KEY 1000000000000ubaby --keyring-backend $KEYRING
