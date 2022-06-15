@@ -3,9 +3,7 @@ services:
   node:
     build:
       context: .
-      args:
-        - arch=${ARCH:-x86_64}
-    command: ./homework/deploy-testnet.sh
+    command: bash deploy-testnet.sh
     ports:
       - 1350:1350 # rest
       - 1711:1711 # rpc
