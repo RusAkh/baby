@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine3.16
+FROM golang:1.18-alpine3.16 AS go-builder
 
 RUN set -eux
 
@@ -10,11 +10,14 @@ COPY . /code/
 
 # Install babyd binary
 RUN echo "Installing babyd binary"
-RUN make install
-# Check if babyd is installed
-RUN command -v babyd
+RUN make build
 
-RUN chmod +x homework/deploy-testnet.sh
+#-------------------------------------------
+FROM alpine:3.16
+
+COPY --from=go-builder /code/bin/babyd /usr/bin/babyd
+
+
 
 # rest server
 EXPOSE 1350
