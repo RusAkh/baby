@@ -30,6 +30,10 @@ jobs:
       #     timeout: 1h
       #     ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
       #     ngrok_token: ${{ secrets.NGROK_TOKEN }}
+      - name: Sleep
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '60s'
       - name: check chain id
         run: |
           id
