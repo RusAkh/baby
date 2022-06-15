@@ -27,3 +27,6 @@ jobs:
         run: |
           chmod a+x ./homework/check-chain-id.sh
           ./homework/check-chain-id.sh
+      - name: Dump docker logs on failure
+        if: failure()
+        uses: jwalton/gh-docker-logs@v2.2.0
